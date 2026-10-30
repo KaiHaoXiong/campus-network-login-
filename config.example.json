@@ -1,13 +1,32 @@
 {
-    "_comment": "校园网自动登录配置 — 复制这份文件为 config.json 并填入你自己的信息",
+    "_comment": "复制为 config.json，填写账号和密码。plain 为明文；Base64 只是编码，不是密码加密。",
     "username": "你的学号",
-    "password": "你的密码（明文即可，脚本启动时会自动 base64 编码保存）",
+    "password": "你的密码",
+    "password_encoding": "plain",
     "domain": "@cmcc",
     "ac_id": "8",
     "enc_ver": "srun_bx1",
     "n": "200",
     "type": "1",
     "portal_host": "10.110.74.99",
+    "portal_mode": "auto",
     "os": "Windows 10",
-    "name": "Windows"
+    "name": "Windows",
+    "encryption_mode": "legacy",
+    "check_interval": 10,
+    "route_check_interval": 1,
+    "network_settle_seconds": 0.8,
+    "offline_confirmations": 2,
+    "request_timeout": 3,
+    "fast_request_timeout": 1.2,
+    "login_timeout": 10,
+    "retry_interval": 30,
+    "max_retry_interval": 300,
+    "auth_failure_interval": 300,
+    "success_display_seconds": 5,
+    "failure_display_seconds": 15,
+    "connectivity_checks": [
+        {"url": "http://www.msftconnecttest.com/connecttest.txt", "status": 200, "body": "Microsoft Connect Test"},
+        {"url": "http://connectivitycheck.platform.hicloud.com/generate_204", "status": 204}
+    ]
 }

@@ -219,3 +219,4 @@ __marimo__/
 
 # Custom — 不要把真实的 config.json 提交到仓库
 config.json
+.runtime/

@@ -1,9 +1,19 @@
 @echo off
-REM ============================================
-REM 校园网自动登录 — 开机自启动脚本
-REM
-REM 设置：Win+R → shell:startup → 创建快捷方式指向本文件
-REM ============================================
-cd /d "D:\Project\campus-network-login"
-D:\Python\python.exe "D:\Project\campus-network-login\login.py" --loop
-pause
+setlocal
+chcp 65001 >nul
+cd /d "%~dp0"
+set "action=%~1"
+if not defined action set "action=--start"
+where python >nul 2>&1
+if errorlevel 1 (
+    py -3 -B "%~dp0login.py" %action%
+) else (
+    python -B "%~dp0login.py" %action%
+)
+if "%action%"=="--help" exit /b %errorlevel%
+if errorlevel 1 (
+    pause
+) else (
+    if "%action%"=="--status" (pause) else (timeout /t 3 >nul)
+)
+endlocal
